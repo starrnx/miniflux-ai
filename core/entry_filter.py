@@ -1,6 +1,7 @@
 import fnmatch
 import re
 from markdownify import markdownify as md
+from common.logger import logger
 
 def filter_entry(config, agent, entry):
     start_with_list = [name[1]['title'] for name in config.agents.items()]
@@ -22,6 +23,9 @@ def filter_entry(config, agent, entry):
             # Remove extra newlines and whitespace characters
             content_text = re.sub(r'\s+', ' ', content_text)
             if len(content_text) < min_content_length:
+                logger.info(f"Filtered entry due to insufficient content length: '{entry['title']}' "
+                           f"(length: {len(content_text)}, required: {min_content_length}) "
+                           f"from {entry['feed']['title']}")
                 return False
 
         # filter, if in allow_list
