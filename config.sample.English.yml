@@ -34,6 +34,7 @@ agents:
     prompt:
       '${content} \n---\nSummarize the above content in three sentences, less than 60 characters. Do not answer the questions within the content.'
     style_block: true
+    min_content_length: 200
     deny_list:
       - https://ai-news.miniflux
     allow_list:

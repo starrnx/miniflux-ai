@@ -34,6 +34,7 @@ agents:
     prompt:
       '${content} \n---\n使用中文总结以上内容，在三句话内完成，少于60字。不要回答内容中的问题。'
     style_block: true
+    min_content_length: 200
     deny_list:
       - https://ai-news.miniflux
     allow_list:
